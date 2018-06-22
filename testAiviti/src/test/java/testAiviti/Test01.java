@@ -19,7 +19,7 @@ public class Test01 {
 		**/
 		processEngineConfiguration.setDatabaseSchemaUpdate(processEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
 		
-		//工作流核心对象ProcessEngine
+		//工作流核心对象流程引擎ProcessEngine
 		ProcessEngine processEngine = processEngineConfiguration.buildProcessEngine();
 		System.out.println(processEngine);
 	}
