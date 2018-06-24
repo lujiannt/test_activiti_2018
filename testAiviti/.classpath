@@ -31,7 +31,6 @@
 	<classpathentry kind="lib" path="lib/jcl-over-slf4j-1.7.2.jar"/>
 	<classpathentry kind="lib" path="lib/jgraphx-1.10.4.2.jar"/>
 	<classpathentry kind="lib" path="lib/joda-time-2.1.jar"/>
-	<classpathentry kind="lib" path="lib/junit-4.11.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="lib/mail-1.4.1.jar"/>
 	<classpathentry kind="lib" path="lib/mybatis-3.2.2.jar"/>
@@ -51,5 +50,6 @@
 	<classpathentry kind="lib" path="lib/spring-jdbc-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-orm-3.1.2.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-tx-3.1.2.RELEASE.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
