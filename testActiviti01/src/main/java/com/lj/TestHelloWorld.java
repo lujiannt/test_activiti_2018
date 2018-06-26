@@ -48,7 +48,7 @@ public class TestHelloWorld {
 	//步骤3.查询任务
 	@Test
 	public void testQueryTask() {
-		String user = "王五";
+		String user = "张三";
 		List<Task> taskList = ProcessEngine.getTaskService()//taskService和任务相关
 										.createTaskQuery()
 										.taskAssignee(user)
@@ -68,7 +68,7 @@ public class TestHelloWorld {
 	//步骤4.完成任务
 	@Test
 	public void testFinishTask() {
-		String taskId = "302";
+		String taskId = "102";
 		ProcessEngine.getTaskService().complete(taskId);
 	}
 
