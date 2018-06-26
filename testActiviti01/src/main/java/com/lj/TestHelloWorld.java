@@ -10,7 +10,7 @@ import org.activiti.engine.task.Task;
 import org.junit.Test;
 
 /**
- * 工作入门
+ * 工作流入门
  * @author lujian
  * @create 2018年6月26日
  * @version 1.0
@@ -70,6 +70,10 @@ public class TestHelloWorld {
 	public void testFinishTask() {
 		String taskId = "302";
 		ProcessEngine.getTaskService().complete(taskId);
+	}
+
+	public static void main(String[] args) {
+		步骤
 	}
 	
 	//接下来就一直循环执行步骤3和步骤4，直到所有任务完成，会自动结束该流程
