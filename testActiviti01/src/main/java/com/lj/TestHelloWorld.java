@@ -72,9 +72,6 @@ public class TestHelloWorld {
 		ProcessEngine.getTaskService().complete(taskId);
 	}
 
-	public static void main(String[] args) {
-		步骤
-	}
 	
 	//接下来就一直循环执行步骤3和步骤4，直到所有任务完成，会自动结束该流程
 	//..
