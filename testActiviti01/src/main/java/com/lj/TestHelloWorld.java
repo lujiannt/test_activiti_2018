@@ -22,7 +22,7 @@ public class TestHelloWorld {
 	//步骤1.部署流程定义
 	@Test
 	public void testDeploy() {
-		Deployment deployment = ProcessEngine.getRepositoryService()//和流程定义相关
+		Deployment deployment = ProcessEngine.getRepositoryService()//repositoryService和流程定义管理相关
 										.createDeployment()
 										.addClasspathResource("diagrams/helloWorld.bpmn")
 										.addClasspathResource("diagrams/helloWorld.png")
@@ -37,7 +37,7 @@ public class TestHelloWorld {
 	@Test
 	public void testInstance() {
 		String key = "helloWorld";
-		ProcessInstance processInstance = ProcessEngine.getRuntimeService()//和执行过程相关
+		ProcessInstance processInstance = ProcessEngine.getRuntimeService()//runtimeService和执行过程相关
 										.startProcessInstanceByKey(key);
 
 		System.out.println(processInstance.getId());
@@ -49,7 +49,7 @@ public class TestHelloWorld {
 	@Test
 	public void testQueryTask() {
 		String user = "王五";
-		List<Task> taskList = ProcessEngine.getTaskService()//和任务相关
+		List<Task> taskList = ProcessEngine.getTaskService()//taskService和任务相关
 										.createTaskQuery()
 										.taskAssignee(user)
 										.list();
