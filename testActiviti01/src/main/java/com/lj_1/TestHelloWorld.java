@@ -1,4 +1,4 @@
-package com.lj;
+package com.lj_1;
 
 import java.util.List;
 
