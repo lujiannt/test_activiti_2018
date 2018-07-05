@@ -3,6 +3,7 @@ package com.lj_1;
 import java.util.List;
 
 import org.activiti.engine.ProcessEngine;
+import org.activiti.engine.ProcessEngineConfiguration;
 import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -16,7 +17,11 @@ import org.junit.Test;
  * @version 1.0
  */
 public class TestHelloWorld {
-	//获取流程引擎
+	//获取流程引擎（一般方法）
+	//	ProcessEngineConfiguration pec = ProcessEngineConfiguration.createProcessEngineConfigurationFromResource("activiti.cfg.xml");
+	//	ProcessEngine processEngine = pec.buildProcessEngine();
+	
+	//获取流程引擎（简单方法，activiti配置文件名必须是activiti.cfg.xml）
 	ProcessEngine ProcessEngine = ProcessEngines.getDefaultProcessEngine();
 	
 	//步骤1.部署流程定义
