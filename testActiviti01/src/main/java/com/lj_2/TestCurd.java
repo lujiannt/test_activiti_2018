@@ -1,5 +1,6 @@
 package com.lj_2;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 import java.util.zip.ZipInputStream;
@@ -8,6 +9,7 @@ import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.ProcessDefinition;
+import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 public class TestCurd {
@@ -52,5 +54,39 @@ public class TestCurd {
 			System.out.println(pro.getId());
 			System.out.println("-------------------------------------------");
 		}
+	}
+	
+	//删除流程定义
+	@Test
+	public void testDelPro() {
+		//只能删除掉没有启动的流程定义
+//		ProcessEngine.getRepositoryService()
+//					.deleteDeployment("301");
+		
+		//级联删除，不管是否启动都删除（默认是false）
+		ProcessEngine.getRepositoryService()
+			.deleteDeployment("201", true);
+	}
+	
+	//获取工作流图片并保存到本地
+	@Test
+	public void testSaveImg() throws Exception{
+		String deployId = "101";
+		//查询该部署id下所有资源文件
+		List<String> list = ProcessEngine.getRepositoryService()
+								.getDeploymentResourceNames(deployId);
+		
+		String fileName = "";
+		for(String resName : list) {
+			if(resName.indexOf("png") > 0) {
+				fileName = resName;
+			}
+		}
+			
+		//直接获得资源文件转成的流
+		InputStream is = ProcessEngine.getRepositoryService()
+							.getResourceAsStream(deployId, fileName);
+		
+		FileUtils.copyInputStreamToFile(is, new File("F://test/"+fileName));
 	}
 }
