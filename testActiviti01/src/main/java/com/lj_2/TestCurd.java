@@ -56,7 +56,7 @@ public class TestCurd {
 		}
 	}
 	
-	//删除流程定义
+	//根据部署id删除流程定义
 	@Test
 	public void testDelPro() {
 		//只能删除掉没有启动的流程定义
