@@ -2,7 +2,12 @@ package com.lj_2;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.zip.ZipInputStream;
 
 import org.activiti.engine.ProcessEngine;
@@ -88,5 +93,41 @@ public class TestCurd {
 							.getResourceAsStream(deployId, fileName);
 		
 		FileUtils.copyInputStreamToFile(is, new File("F://test/"+fileName));
+	}
+	
+	//查询出所有流程定义的最新版本
+	@Test
+	public void testQueryNewest() throws Exception{
+		List<ProcessDefinition> list = ProcessEngine.getRepositoryService()
+								.createProcessDefinitionQuery()
+								.orderByProcessDefinitionVersion()
+								.asc()
+								.list();
+		
+		Map<String, Object> map = new LinkedHashMap<>();
+		for(ProcessDefinition processDefinition : list) {
+			map.put(processDefinition.getKey(), processDefinition);
+		}
+			
+		Set<String> keys = map.keySet();
+		for(String key : keys) {
+			System.out.println("key = " + key + " version = " + ((ProcessDefinition)map.get(key)).getVersion());
+		}
+	}
+	
+	//删除该key下所有流程定义
+	@Test
+	public void testDelAll() throws Exception{
+		List<ProcessDefinition> list = ProcessEngine.getRepositoryService()
+								.createProcessDefinitionQuery()
+								.list();
+		
+		for(ProcessDefinition processDefinition : list) {
+			String deployId = processDefinition.getDeploymentId();
+			
+			ProcessEngine.getRepositoryService()
+			.deleteDeployment(deployId, true);
+		}
+			
 	}
 }
